@@ -178,6 +178,17 @@ footer a { color: var(--orange-dark); }
 .data-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 5px; }
 .file-button { position: relative; }
 .file-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.install-note { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.install-guides { display: grid; gap: 12px; }
+.install-platform { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); }
+.install-platform h3 { margin: 10px 0 12px; font-size: 16px; letter-spacing: -.02em; }
+.install-platform ol { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.install-platform li + li { margin-top: 7px; }
+.install-platform strong { color: var(--text); }
+.platform-badge { display: inline-flex; padding: 5px 8px; border-radius: 7px; color: var(--orange-dark); background: var(--orange-soft); font-size: 10px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.platform-badge.android { color: var(--green); background: var(--green-soft); }
+.offline-tip { margin: 14px 0 4px; padding: 14px; color: var(--muted); background: var(--green-soft); border-radius: 13px; font-size: 12px; line-height: 1.5; }
+.offline-tip strong { color: var(--text); }
 .about-group { border: 0; }
 .about-group > p { color: var(--muted); font-size: 11px; line-height: 1.5; }
 .tiny-logo { width: 31px; height: 31px; display: grid; place-items: center; background: var(--orange); color: white; border-radius: 9px; font-weight: 750; }
