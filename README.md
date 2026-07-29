@@ -37,6 +37,24 @@ Traccal starts as a beautifully simple calculator: enter the kcal per 100 g and 
 - **Under your control.** Export backups, choose retention, or clear individual data categories.
 - **Made for every screen.** Mobile-first, responsive on desktop, and installable as a PWA.
 
+## Install Traccal
+
+Install it once, then open Traccal from your home screen like any other app.
+
+### iPhone or iPad
+
+1. Open [Traccal](https://mlayklayer.github.io/Traccal/) in **Safari**.
+2. Tap **Share**, then **Add to Home Screen**.
+3. Turn on **Open as Web App**, then tap **Add**.
+
+### Android
+
+1. Open [Traccal](https://mlayklayer.github.io/Traccal/) in **Chrome**.
+2. Tap the **⋮ menu**, then **Add to home screen**.
+3. Tap **Install** and follow the prompt.
+
+> **Using Traccal offline:** Open it once while connected to the internet and wait a moment for the app to cache. After that, launch it from your home screen without internet. Calculations, settings, and logs remain on your device.
+
 ## Thoughtful details
 
 Warm cream, orange, and soft-green styling · Light, dark, and automatic themes · Optional sound and vibration · Reduced-motion support · Keyboard and screen-reader friendly · English-first and translation-ready
