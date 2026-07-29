@@ -215,6 +215,12 @@
           <button class="setting-row row-button" id="storage-open"><span><strong>Storage & cleanup</strong><small id="storage-summary">Stored locally</small></span><span>›</span></button>
         </section>
 
+        <section class="settings-group">
+          <h3>Install & offline</h3>
+          <button class="setting-row row-button" id="install-guide-open"><span><strong>Install Traccal</strong><small>Add it to your iPhone or Android home screen</small></span><span>›</span></button>
+          <p class="install-note">Open Traccal once while online. After that, the installed app and your saved data remain available offline.</p>
+        </section>
+
         <section class="settings-group about-group">
           <h3>About</h3>
           <div class="setting-row"><span><strong>Traccal</strong><small>Private offline calorie calculator · v1.0</small></span><span class="tiny-logo">T</span></div>
@@ -265,6 +271,34 @@
           <button type="button" data-clean="favorites"><span><strong>Saved foods</strong><small>Remove all favorites</small></span><span>Clear</span></button>
           <button type="button" data-clean="all" class="danger"><span><strong>Reset Traccal</strong><small>Erase all settings and data</small></span><span>Reset</span></button>
         </div>
+      </form>
+    </dialog>
+
+    <dialog id="install-dialog">
+      <form method="dialog">
+        <div class="dialog-heading"><div><p class="section-kicker">Take Traccal with you</p><h2>Install & use offline</h2></div><button class="icon-button" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="install-guides">
+          <section class="install-platform">
+            <span class="platform-badge">iOS</span>
+            <h3>iPhone or iPad</h3>
+            <ol>
+              <li>Open <strong>Traccal in Safari</strong>.</li>
+              <li>Tap <strong>Share</strong>, then <strong>Add to Home Screen</strong>.</li>
+              <li>Turn on <strong>Open as Web App</strong>, then tap <strong>Add</strong>.</li>
+            </ol>
+          </section>
+          <section class="install-platform">
+            <span class="platform-badge android">Android</span>
+            <h3>Android</h3>
+            <ol>
+              <li>Open <strong>Traccal in Chrome</strong>.</li>
+              <li>Tap the <strong>⋮ menu</strong>, then <strong>Add to home screen</strong>.</li>
+              <li>Tap <strong>Install</strong> and follow the prompt.</li>
+            </ol>
+          </section>
+        </div>
+        <p class="offline-tip"><strong>For offline use:</strong> launch Traccal once with an internet connection and wait a moment. You can then open it from your home screen without internet. Your records stay on this device.</p>
+        <button class="button primary full" value="cancel">Got it</button>
       </form>
     </dialog>
 
