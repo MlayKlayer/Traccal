@@ -397,6 +397,7 @@ function bindEvents() {
   $("#goal-settings-open").addEventListener("click", openGoal);
   $("#estimate-open").addEventListener("click", () => $("#estimate-dialog").showModal());
   $("#storage-open").addEventListener("click", () => $("#storage-dialog").showModal());
+  $("#install-guide-open").addEventListener("click", () => $("#install-dialog").showModal());
   $("#calculate-estimate").addEventListener("click", calculateEstimate);
   $("#use-estimate").addEventListener("click", () => {
     if (estimatedGoal) {
