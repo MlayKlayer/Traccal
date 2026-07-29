@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f0e4" />
+    <meta name="description" content="Traccal — a private, offline calorie calculator and tracker." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Traccal · Offline calorie calculator</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to calculator</a>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Traccal home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 27c7-4 10-9 8-15-5-1-9 1-11 5 0-4-2-7-6-9-2 8 1 15 9 19Z"/><path d="M11 20c3-1 6-1 9 0"/></svg>
+          </span>
+          <span>Traccal</span>
+        </a>
+        <div class="header-actions">
+          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Change theme" title="Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+          </button>
+          <button class="icon-button" id="settings-open" type="button" aria-label="Open settings" title="Settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.95 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.58 15 1.7 1.7 0 0 0 3 14H3v-4h.08A1.7 1.7 0 0 0 4.6 8.95a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.58 1.7 1.7 0 0 0 10 3V3h4v.08A1.7 1.7 0 0 0 15.05 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06L19.82 7l-.06.06A1.7 1.7 0 0 0 19.42 9c.25.61.85 1 1.51 1H21v4h-.08A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Private · offline · yours</p>
+            <h1>Calories, without<br />the clutter.</h1>
+            <p class="hero-copy">A quick answer when that’s all you need. A thoughtful tracker when you want more.</p>
+          </div>
+          <div class="mode-pill" id="mode-pill" aria-label="Current mode">
+            <span class="mode-dot"></span><span id="mode-label">Simple mode</span>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="calculator-card card" aria-labelledby="calculator-title">
+            <div class="card-heading">
+              <div>
+                <p class="section-kicker">Quick calculate</p>
+                <h2 id="calculator-title">What’s on your plate?</h2>
+              </div>
+              <button class="icon-button soft" id="clear-calculator" type="button" aria-label="Clear calculator" title="Clear">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6M10 10v7M14 10v7"/></svg>
+              </button>
+            </div>
+
+            <div class="optional-name hidden" id="name-field-wrap">
+              <label for="food-name">Food name <span>optional</span></label>
+              <input id="food-name" type="text" maxlength="60" autocomplete="off" placeholder="e.g. Greek yogurt" />
+            </div>
+
+            <div class="input-pair">
+              <label class="number-field" for="calories-input">
+                <span>Energy</span>
+                <span class="input-control">
+                  <input id="calories-input" inputmode="decimal" type="text" autocomplete="off" placeholder="0" aria-describedby="calories-unit" />
+                  <span id="calories-unit">kcal / 100 g</span>
+                </span>
+              </label>
+              <span class="math-symbol" aria-hidden="true">×</span>
+              <label class="number-field" for="grams-input">
+                <span>Amount</span>
+                <span class="input-control">
+                  <input id="grams-input" inputmode="decimal" type="text" autocomplete="off" placeholder="0" aria-describedby="grams-unit" />
+                  <span id="grams-unit">grams</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="result-panel" aria-live="polite" aria-atomic="true">
+              <div>
+                <p>Your portion contains</p>
+                <div class="result"><strong id="result-number">—</strong><span>kcal</span></div>
+              </div>
+              <div class="result-orb" aria-hidden="true"><span id="result-ring"></span></div>
+            </div>
+
+            <div class="calculator-actions hidden" id="tracker-actions">
+              <button class="button primary" id="add-today" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Add to today
+              </button>
+              <button class="button secondary" id="save-favorite" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg>
+                Save
+              </button>
+            </div>
+
+            <details class="advanced-fields hidden" id="advanced-fields">
+              <summary>Nutrition details <span>optional</span></summary>
+              <div class="macro-grid">
+                <label>Protein <span><input id="protein-input" inputmode="decimal" placeholder="0" /> g</span></label>
+                <label>Carbs <span><input id="carbs-input" inputmode="decimal" placeholder="0" /> g</span></label>
+                <label>Fat <span><input id="fat-input" inputmode="decimal" placeholder="0" /> g</span></label>
+                <label>Fiber <span><input id="fiber-input" inputmode="decimal" placeholder="0" /> g</span></label>
+                <label>Sugar <span><input id="sugar-input" inputmode="decimal" placeholder="0" /> g</span></label>
+                <label>Salt <span><input id="salt-input" inputmode="decimal" placeholder="0" /> g</span></label>
+              </div>
+              <p class="field-note" id="macro-note">Values per 100 g. More units and serving conversion are available in Settings.</p>
+            </details>
+          </section>
+
+          <aside class="side-stack">
+            <section class="today-card card hidden" id="today-card" aria-labelledby="today-title">
+              <div class="card-heading">
+                <div>
+                  <p class="section-kicker" id="today-date">Today</p>
+                  <h2 id="today-title">Your day</h2>
+                </div>
+                <button class="text-button" id="history-open" type="button">History</button>
+              </div>
+              <div class="goal-summary">
+                <div class="goal-ring" id="goal-ring"><span><strong id="today-total">0</strong><small>kcal</small></span></div>
+                <div>
+                  <p id="remaining-label">Set a daily goal</p>
+                  <button class="inline-action" id="set-goal-open" type="button">Set goal</button>
+                </div>
+              </div>
+              <div class="today-list" id="today-list"></div>
+              <p class="empty-state" id="today-empty">Nothing logged yet. Your day is a clean slate.</p>
+            </section>
+
+            <section class="recents-card card" aria-labelledby="recents-title">
+              <div class="card-heading compact">
+                <div>
+                  <p class="section-kicker">At a glance</p>
+                  <h2 id="recents-title">Recent calculations</h2>
+                </div>
+                <button class="text-button hidden" id="clear-recents" type="button">Clear</button>
+              </div>
+              <div class="recent-list" id="recent-list"></div>
+              <p class="empty-state" id="recent-empty">Your last calculations will wait here.</p>
+            </section>
+
+            <section class="favorites-card card hidden" id="favorites-card" aria-labelledby="favorites-title">
+              <div class="card-heading compact">
+                <div><p class="section-kicker">Ready again</p><h2 id="favorites-title">Saved foods</h2></div>
+              </div>
+              <div class="recent-list" id="favorites-list"></div>
+              <p class="empty-state" id="favorites-empty">Name a food and save it for one-tap reuse.</p>
+            </section>
+          </aside>
+        </div>
+      </main>
+
+      <footer>
+        <span>Made with care by Mlayklayer</span>
+        <a class="hidden" id="feedback-link" href="#" target="_blank" rel="noopener">Help us get better</a>
+        <span class="offline-badge"><i></i>Works offline</span>
+      </footer>
+    </div>
+
+    <div class="scrim" id="scrim"></div>
+
+    <aside class="drawer" id="settings-drawer" aria-labelledby="settings-title" aria-hidden="true">
+      <div class="drawer-header">
+        <div><p class="section-kicker">Make it yours</p><h2 id="settings-title">Settings</h2></div>
+        <button class="icon-button" data-close-drawer type="button" aria-label="Close settings"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="drawer-content">
+        <section class="settings-group">
+          <h3>Experience</h3>
+          <div class="mode-selector" role="radiogroup" aria-label="App mode">
+            <button data-mode="simple" role="radio" aria-checked="true"><span class="selector-icon">○</span><span><strong>Simple</strong><small>Calculator and recents</small></span></button>
+            <button data-mode="tracker" role="radio" aria-checked="false"><span class="selector-icon">◔</span><span><strong>Tracker</strong><small>Daily log, goals and history</small></span></button>
+            <button data-mode="advanced" role="radio" aria-checked="false"><span class="selector-icon">●</span><span><strong>Advanced</strong><small>Full nutrition and estimates</small></span></button>
+          </div>
+        </section>
+
+        <section class="settings-group">
+          <h3>Appearance & feedback</h3>
+          <div class="setting-row">
+            <span><strong>Theme</strong><small>Follow your system or choose one</small></span>
+            <div class="segmented compact-segmented" aria-label="Theme">
+              <button data-theme="auto" class="active">Auto</button><button data-theme="light">Light</button><button data-theme="dark">Dark</button>
+            </div>
+          </div>
+          <label class="setting-row"><span><strong>Sound</strong><small>A quiet cue when adding food</small></span><input class="switch" id="sound-toggle" type="checkbox" /></label>
+          <label class="setting-row"><span><strong>Vibration</strong><small>Gentle feedback on supported devices</small></span><input class="switch" id="vibration-toggle" type="checkbox" /></label>
+        </section>
+
+        <section class="settings-group">
+          <h3>Goals & nutrition</h3>
+          <button class="setting-row row-button" id="goal-settings-open"><span><strong>Daily goal</strong><small id="goal-setting-summary">Not set</small></span><span>›</span></button>
+          <button class="setting-row row-button advanced-only hidden" id="estimate-open"><span><strong>Estimate my goal</strong><small>Using your body and activity</small></span><span>›</span></button>
+          <label class="setting-row advanced-only hidden"><span><strong>Display unit</strong><small>Used for food amounts</small></span>
+            <select id="unit-select"><option value="g">Grams (g)</option><option value="ml">Milliliters (ml)</option><option value="oz">Ounces (oz)</option><option value="serving">Serving</option></select>
+          </label>
+        </section>
+
+        <section class="settings-group">
+          <h3>Data & privacy</h3>
+          <label class="setting-row"><span><strong>Keep history</strong><small>Older daily logs are removed automatically</small></span>
+            <select id="retention-select"><option value="7">7 days</option><option value="30">30 days</option><option value="90">90 days</option><option value="365">1 year</option><option value="forever">Forever</option></select>
+          </label>
+          <p class="privacy-note"><svg viewBox="0 0 24 24"><path d="M12 21s8-4 8-10V5l-8-3-8 3v6c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg><span>Your data never leaves this device. Clearing browser site data can erase it, so export a backup if it matters to you.</span></p>
+          <div class="data-actions">
+            <button class="button secondary" id="export-data">Export backup</button>
+            <label class="button secondary file-button">Import backup<input id="import-data" type="file" accept="application/json" /></label>
+          </div>
+          <button class="setting-row row-button" id="storage-open"><span><strong>Storage & cleanup</strong><small id="storage-summary">Stored locally</small></span><span>›</span></button>
+        </section>
+
+        <section class="settings-group about-group">
+          <h3>About</h3>
+          <div class="setting-row"><span><strong>Traccal</strong><small>Private offline calorie calculator · v1.0</small></span><span class="tiny-logo">T</span></div>
+          <p>Calorie estimates are informational only and are not medical advice.</p>
+        </section>
+      </div>
+    </aside>
+
+    <aside class="drawer subdrawer" id="history-drawer" aria-labelledby="history-title" aria-hidden="true">
+      <div class="drawer-header"><div><p class="section-kicker">Your rhythm</p><h2 id="history-title">History</h2></div><button class="icon-button" data-close-drawer aria-label="Close history"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <div class="drawer-content" id="history-content"></div>
+    </aside>
+
+    <dialog id="goal-dialog">
+      <form method="dialog" id="goal-form">
+        <div class="dialog-heading"><div><p class="section-kicker">A gentle guide</p><h2>Daily kcal goal</h2></div><button class="icon-button" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <label class="dialog-field">Daily target <span><input id="goal-input" type="number" inputmode="numeric" min="500" max="10000" placeholder="2000" /> kcal</span></label>
+        <p class="field-note">This is a personal reference, not a medical recommendation.</p>
+        <button class="button primary full" value="save">Save goal</button>
+      </form>
+    </dialog>
+
+    <dialog id="estimate-dialog">
+      <form method="dialog" id="estimate-form">
+        <div class="dialog-heading"><div><p class="section-kicker">Advanced estimate</p><h2>Find a starting point</h2></div><button class="icon-button" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="estimate-grid">
+          <label>Age<input name="age" type="number" min="18" max="100" required placeholder="30" /></label>
+          <label>Formula sex<select name="sex"><option value="female">Female</option><option value="male">Male</option></select></label>
+          <label>Height, cm<input name="height" type="number" min="100" max="250" required placeholder="170" /></label>
+          <label>Weight, kg<input name="weight" type="number" min="30" max="350" step="0.1" required placeholder="70" /></label>
+          <label class="wide">Activity<select name="activity"><option value="1.2">Mostly seated</option><option value="1.375">Lightly active</option><option value="1.55">Moderately active</option><option value="1.725">Very active</option><option value="1.9">Extra active</option></select></label>
+          <label class="wide">Goal<select name="direction"><option value="-350">Gradual loss (−350 kcal)</option><option value="0">Maintain weight</option><option value="300">Gradual gain (+300 kcal)</option></select></label>
+        </div>
+        <div class="estimate-result hidden" id="estimate-result"></div>
+        <p class="field-note">Mifflin–St Jeor estimates resting energy, then the selected activity factor estimates maintenance. Goal adjustments are planning defaults, not part of the equation or medical advice.</p>
+        <button class="button primary full" id="calculate-estimate" type="button">Calculate estimate</button>
+        <button class="button secondary full hidden" id="use-estimate" value="save">Use as my goal</button>
+      </form>
+    </dialog>
+
+    <dialog id="storage-dialog">
+      <form method="dialog">
+        <div class="dialog-heading"><div><p class="section-kicker">You’re in control</p><h2>Storage & cleanup</h2></div><button class="icon-button" value="cancel" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <div class="cleanup-list">
+          <button type="button" data-clean="cache"><span><strong>Temporary cache</strong><small>Offline files will be downloaded again</small></span><span>Clear</span></button>
+          <button type="button" data-clean="recents"><span><strong>Recent calculations</strong><small>Does not affect daily logs</small></span><span>Clear</span></button>
+          <button type="button" data-clean="logs"><span><strong>Daily logs</strong><small>Remove your food history</small></span><span>Clear</span></button>
+          <button type="button" data-clean="favorites"><span><strong>Saved foods</strong><small>Remove all favorites</small></span><span>Clear</span></button>
+          <button type="button" data-clean="all" class="danger"><span><strong>Reset Traccal</strong><small>Erase all settings and data</small></span><span>Reset</span></button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js" defer></script>
+  </body>
+</html>

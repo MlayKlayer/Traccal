@@ -1,0 +1,15 @@
+{
+  "name": "Traccal — Offline Calorie Calculator",
+  "short_name": "Traccal",
+  "description": "A private, lightweight calorie calculator and tracker that works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f0e4",
+  "theme_color": "#f7f0e4",
+  "categories": ["health", "lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
